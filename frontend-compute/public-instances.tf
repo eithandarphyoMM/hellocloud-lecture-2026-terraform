@@ -45,6 +45,8 @@ resource "aws_instance" "frontend_public_instance01" {
   subnet_id = data.terraform_remote_state.network.outputs.public_subnet_01_id
   # vpc_security_group_ids = [aws_security_group.fe_public_sg01.id]
   vpc_security_group_ids = [data.terraform_remote_state.security.outputs.fe_public_sg01_id]
+  
+
 
   tags = {
     Name        = "${var.frontend_prefix}-public-instance01"
@@ -60,7 +62,7 @@ resource "null_resource" "configure-fe-public-instance01" {
   }
 
   provisioner "file" {
-    source      = "${path.module}/../files/"
+    source      = "${path.module}/files/"
     destination = "/home/ec2-user/"
 
     connection {

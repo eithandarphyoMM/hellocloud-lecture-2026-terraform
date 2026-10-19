@@ -1,17 +1,29 @@
-# Read state from the local frontend-security folder
+# Read state from the HCP Terraform remote workspace instead of a local file path
 data "terraform_remote_state" "frontend_security" {
-  backend = "local"
+  backend = "remote"
 
+  # config = {
+  #   path = "${path.module}/../frontend-security/terraform.tfstate"
+  # }
   config = {
-    path = "${path.module}/../frontend-security/terraform.tfstate"
+    organization = "HelloCloud_learning"
+    workspaces = {
+      name = "frontend-security-ws"
+    }
   }
 }
 
-# Read state from the local backend-network folder
+# Read state from the HCP Terraform remote workspace instead of a local file path
 data "terraform_remote_state" "network" {
-  backend = "local"
+  backend = "remote"
 
+  # config = {
+  #   path = "${path.module}/../backend-network/terraform.tfstate"
+  # }
   config = {
-    path = "${path.module}/../backend-network/terraform.tfstate"
+    organization = "HelloCloud_learning"
+    workspaces = {
+      name = "backend-network-ws"
+    }
   }
 }

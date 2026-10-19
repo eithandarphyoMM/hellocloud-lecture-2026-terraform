@@ -11,8 +11,8 @@ Because modules depend on each other's outputs (e.g., VPC peering requires backe
 ### Deployment Order (Apply First to Last)
 1. **`backend-network`** (Must be applied first so its VPC outputs are available for peering)
 2. **`frontend-network`** (Deploys frontend VPC and establishes the VPC peering connection to the backend)
-3. **`backend-security`** & **`frontend-security`** (Creates security groups referencing the networks)
-4. **`backend-compute`** & **`frontend-compute`** (Deploys EC2 instances, key pairs, EIPs, and provisioners)
+3. **`frontend-security`** & **`backend-security`** (Creates security groups referencing the networks)
+4. **`frontend-compute`** & **`backend-compute`** (Deploys EC2 instances, key pairs, EIPs, and provisioners)
 
 ---
 
