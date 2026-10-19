@@ -46,7 +46,7 @@ resource "null_resource" "configure-fe-private-instance01" {
   }
 
   provisioner "file" {
-    source      = "${path.module}/../files/"
+    source      = "${path.module}/files/"
     destination = "/home/ubuntu/"
     connection {
       type                = "ssh"

@@ -38,9 +38,9 @@ resource "aws_eip_association" "be_public_instance_eip_assoc" {
 }
 
 resource "aws_instance" "backend_public_instance01" {
-  ami                    = data.aws_ami.be_public_instance_ami.id
-  instance_type          = var.be_instance_type
-  key_name               = aws_key_pair.be_keypair.key_name
+  ami           = data.aws_ami.be_public_instance_ami.id
+  instance_type = var.be_instance_type
+  key_name      = aws_key_pair.be_keypair.key_name
   # subnet_id              = aws_subnet.backend_public_subnet01.id
   subnet_id = data.terraform_remote_state.network.outputs.public_subnet_01_id
   # vpc_security_group_ids = [aws_security_group.be_public_sg01.id]
@@ -60,7 +60,7 @@ resource "null_resource" "configure-be-public-instance01" {
   }
 
   provisioner "file" {
-    source      = "${path.module}/../files/"
+    source      = "${path.module}/files/"
     destination = "/home/ec2-user/"
 
     connection {

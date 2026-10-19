@@ -24,11 +24,11 @@ data "aws_ami" "be_private_instance_ami" {
 }
 
 resource "aws_instance" "backend_private_instance01" {
-  ami                    = data.aws_ami.be_private_instance_ami.id
-  instance_type          = var.be_instance_type
-  key_name               = aws_key_pair.be_keypair.key_name
+  ami           = data.aws_ami.be_private_instance_ami.id
+  instance_type = var.be_instance_type
+  key_name      = aws_key_pair.be_keypair.key_name
   # subnet_id              = aws_subnet.backend_private_subnet01.id
-  subnet_id              = data.terraform_remote_state.network.outputs.private_subnet_01_id
+  subnet_id = data.terraform_remote_state.network.outputs.private_subnet_01_id
   # vpc_security_group_ids = [aws_security_group.be_private_sg01.id]
   vpc_security_group_ids = [data.terraform_remote_state.security.outputs.be_private_sg01_id]
 
@@ -46,7 +46,7 @@ resource "null_resource" "configure-be-private-instance01" {
   }
 
   provisioner "file" {
-    source      = "${path.module}/../files/"
+    source      = "${path.module}/files/"
     destination = "/home/ubuntu/"
     connection {
       type                = "ssh"
@@ -102,11 +102,11 @@ resource "null_resource" "configure-be-private-instance01" {
 }
 #####################################################
 resource "aws_instance" "backend_private_instance02" {
-  ami                    = data.aws_ami.be_private_instance_ami.id
-  instance_type          = var.be_instance_type
-  key_name               = aws_key_pair.be_keypair.key_name
+  ami           = data.aws_ami.be_private_instance_ami.id
+  instance_type = var.be_instance_type
+  key_name      = aws_key_pair.be_keypair.key_name
   # subnet_id              = aws_subnet.backend_private_subnet02.id
-  subnet_id              = data.terraform_remote_state.network.outputs.private_subnet_02_id
+  subnet_id = data.terraform_remote_state.network.outputs.private_subnet_02_id
   # vpc_security_group_ids = [aws_security_group.be_private_sg02.id]
   vpc_security_group_ids = [data.terraform_remote_state.security.outputs.be_private_sg02_id]
 
@@ -117,11 +117,11 @@ resource "aws_instance" "backend_private_instance02" {
 }
 
 resource "aws_instance" "backend_private_instance03" {
-  ami                    = data.aws_ami.be_private_instance_ami.id
-  instance_type          = var.be_instance_type
-  key_name               = aws_key_pair.be_keypair.key_name
+  ami           = data.aws_ami.be_private_instance_ami.id
+  instance_type = var.be_instance_type
+  key_name      = aws_key_pair.be_keypair.key_name
   # subnet_id              = aws_subnet.backend_private_subnet03.id
-  subnet_id              = data.terraform_remote_state.network.outputs.private_subnet_03_id
+  subnet_id = data.terraform_remote_state.network.outputs.private_subnet_03_id
   # vpc_security_group_ids = [aws_security_group.be_private_sg03.id]
   vpc_security_group_ids = [data.terraform_remote_state.security.outputs.be_private_sg03_id]
 

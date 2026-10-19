@@ -13,8 +13,8 @@ resource "aws_key_pair" "fe_keypair" {
 
 # Automatically save the private key locally for frontend instances
 resource "local_file" "fe_private_key_pem" {
-  content              = tls_private_key.fe_keypair.private_key_pem
-  filename             = "${path.module}/${local.fe_private_key_filename}"
+  content  = tls_private_key.fe_keypair.private_key_pem
+  filename = "${path.module}/${local.fe_private_key_filename}"
   # file_permission      = "0400" # Secure file permissions required for SSH keys
   # directory_permission = "0700"
 }
